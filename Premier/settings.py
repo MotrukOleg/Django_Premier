@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_pandas',
     'django_plotly_dash'
-
 ]
 
 MIDDLEWARE = [
@@ -79,13 +78,14 @@ WSGI_APPLICATION = 'Premier.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'premier_django',
-        'USER' : 'root',
-        'PASSWORD' : '197346825Oleg@',
+        'USER': 'root',
+        'PASSWORD': '197346825Oleg@',
+        'HOST': 'localhost',  # Set your MySQL host (e.g., 'localhost' or an IP address)
+        'PORT': '3306',  # Default MySQL port
     }
 }
 
@@ -133,8 +133,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
