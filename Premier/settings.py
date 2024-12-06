@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['localhost' , os.environ.get('WEBSITE_HOSTNAME')]
 
 INSTALLED_APPS = [
     'premier_django.apps.PremierDjangoConfig',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -133,6 +134,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
