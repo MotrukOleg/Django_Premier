@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)-r+et+*d7wi3=ik8k-or6$m=w0!vksx_)k24_o0j6mg)%n6_=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['premierDjango.azurewebsites.net']
+ALLOWED_HOSTS = ['localhost' , os.environ.get('WEBSITE_HOSTNAME')]
 
 
 # Application definition
