@@ -12,7 +12,7 @@ from premier_django import NetworkHelper
 from premier_django.repositories.repositories import PlayerRepository
 from premier_django.repositories_manager import RepositoryManager
 from premier_django.serializers import UserSerializer, MatchSerializer, PlayerSerializer, ClubSerializer, \
-    PlayerStatsSerializer
+    PlayerStatsSerializer, StadiumSerializer
 
 
 class ClubViewSet(viewsets.ModelViewSet):
@@ -120,6 +120,39 @@ class MatchViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+class StadiumViewSet(viewsets.ModelViewSet):
+    queryset = RepositoryManager.stadium.get_all()
+    serializer_class = StadiumSerializer
+
+    def list(self, request):
+        stadiums = RepositoryManager.stadium.get_all()
+        serializer = self.serializer_class(stadiums, many=True)
+        return Response(serializer.data)
+
+    def retrieve(self, request, pk=None):
+        stadium = RepositoryManager.stadium.get_by_id(pk)
+        serializer = self.serializer_class(stadium)
+        return Response(serializer.data)
+
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            RepositoryManager.stadium.create(**serializer.validated_data)
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
+    def update(self, request, pk=None):
+        stadium = RepositoryManager.stadium.get_by_id(pk)
+        serializer = self.serializer_class(stadium, data=request.data)
+        if serializer.is_valid():
+            RepositoryManager.stadium.update(pk, **serializer.validated_data)
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
+    def destroy(self, request, pk=None):
+        RepositoryManager.stadium.delete(pk)
+        return Response(status=204)
 
 def item_list(request):
     items = NetworkHelper.get_list('users')

@@ -25,6 +25,13 @@ urlpatterns = [
     path('matches_update/<int:pk>/', MatchViewSet.as_view({'put': 'update'})),
     path('matches_delete/<int:pk>/', MatchViewSet.as_view({'delete': 'destroy'})),
 
+    path('stadiums_list/', views.StadiumViewSet.as_view({'get': 'list'})),
+    path('stadiums/<int:pk>/', views.StadiumViewSet.as_view({'get': 'retrieve'})),
+    path('stadiums_create/', views.StadiumViewSet.as_view({'post': 'create'})),
+    path('stadiums_update/<int:pk>/', views.StadiumViewSet.as_view({'put': 'update'})),
+    path('stadiums_delete/<int:pk>/', views.StadiumViewSet.as_view({'delete': 'destroy'})),
+
+
     path('player_stats_list/', views.PlayerStatsViewSet.as_view({'get': 'list'})),
     path('player_stat_by_match/', views.GoalStatsAPIView.as_view(), name='player_stat_by_match'),
     path('match_possession/', views.MatchPossessionAPIView.as_view(), name='match_possession'),
