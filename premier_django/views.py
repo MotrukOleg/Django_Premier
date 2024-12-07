@@ -87,8 +87,10 @@ def player_create(request):
             current_club = form.cleaned_data['current_club']
             sign_contract_date = form.cleaned_data['sign_contract_date']
             contract_expired = form.cleaned_data['contract_expired']
+            age = form.cleaned_data['age']
+            price = form.cleaned_data['price']
 
-            RepositoryManager.player.create(name, date_of_birth, place_of_birth, height , nationality , position , current_club , sign_contract_date , contract_expired)
+            RepositoryManager.player.create(name, date_of_birth, place_of_birth, height , nationality , position , current_club , sign_contract_date , contract_expired , age , price)
 
             return redirect('player_list')
         else:
