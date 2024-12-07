@@ -3,6 +3,7 @@
 {% block title %}Clubs{% endblock %}
 {% block content %}
 <h2>Club List:</h2>
+<a href="{% url 'club_create' %}">Add New Club</a>
 <ul>
     {% for club in clubs %}
         <li>
