@@ -9,6 +9,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from premier_django import NetworkHelper
+from premier_django.models import stadium
 from premier_django.repositories.repositories import PlayerRepository
 from premier_django.repositories_manager import RepositoryManager
 from premier_django.serializers import UserSerializer, MatchSerializer, PlayerSerializer, ClubSerializer, \
@@ -136,6 +137,7 @@ class StadiumViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def create(self, request):
+        stadium = RepositoryManager.stadium.get_all()
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             RepositoryManager.stadium.create(**serializer.validated_data)

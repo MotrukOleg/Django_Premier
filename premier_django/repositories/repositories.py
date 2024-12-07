@@ -293,16 +293,18 @@ class StadiumRepository:
     def get_stadium_by_id(self, stadium_id):
         return stadium.objects.get(pk=stadium_id)
 
-    def create_stadium(self, name, city, address, tel, fax, website, capacity, opened):
+    @staticmethod
+    def create(name, city, capacity):
         return stadium.objects.create(
-            name=name, city=city, address=address, tel=tel,
-            fax=fax, website=website, capacity=capacity, opened=opened
+            name=name, city=city,capacity=capacity
         )
     @staticmethod
     def get_stadium_capacity():
         return stadium.objects.values('name')\
     .annotate(capacity = F('capacity'))\
     .order_by('-capacity')
+
+    @staticmethod
 
     def update_stadium(self, stadium_id, **kwargs):
         stadium_instance = self.get_stadium_by_id(stadium_id)
