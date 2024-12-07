@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - premierDjango
+name: Build and deploy Python app to Azure Web App - PremierDjango
 
 on:
   push:
@@ -65,14 +65,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_2602555239B848D391BFDDB4E8C92965 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_F4E3C3631682415EBCD782961471E6D4 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_73BDD5E42C34442D8511F1094F54099B }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A280A0D4BA5A4BC4827D2221F4F290D4 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_78D4260779F240C09C7A5EBFD4DACB48 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_86D3151303394689BDD32EF546C931EA }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'premierDjango'
+          app-name: 'PremierDjango'
           slot-name: 'Production'
           
