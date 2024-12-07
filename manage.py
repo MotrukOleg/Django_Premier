@@ -9,7 +9,7 @@ runserver.default_port = "8080"
 def main():
     """Run administrative tasks."""
     runserver.default_port = "8001"
-    settings_module = 'Premier.settings' if 'WEBSITE_HOSTNAME' in os.environ else 'Premier.settings'
+    settings_module = 'Premier.deployment' if 'WEBSITE_HOSTNAME' in os.environ else 'Premier.settings'
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
     try:
         from django.core.management import execute_from_command_line
