@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('premier_django', '0004_alter_standings_goal_difference'),
+        ('premier_django', '0003_alter_standings_goal_difference'),
     ]
 
     operations = [

@@ -246,7 +246,7 @@ def stadium_list(request):
     stadiums = RepositoryManager.stadium.get_all()
     return render(request, 'stadiums/stadium_list.html', {'stadiums': stadiums})
 class ClubViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     queryset = RepositoryManager.club.get_all()
     serializer_class = ClubSerializer
 

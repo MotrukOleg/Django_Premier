@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('premier_django', '0009_match_info_away_team_possession_and_more'),
+        ('premier_django', '0008_match_info_away_team_possession_and_more'),
     ]
 
     operations = [

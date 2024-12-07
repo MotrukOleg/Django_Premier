@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('tel', models.CharField(max_length=100)),
                 ('fax', models.CharField(max_length=100)),
                 ('website', models.CharField(max_length=100)),
-                ('founded', models.IntegerField()),
+                ('founded', models.DateField()),
                 ('coach', models.CharField(max_length=100)),
             ],
         ),
