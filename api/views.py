@@ -137,7 +137,6 @@ class StadiumViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def create(self, request):
-        stadium = RepositoryManager.stadium.get_all()
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             RepositoryManager.stadium.create(**serializer.validated_data)
