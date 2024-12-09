@@ -152,8 +152,8 @@ def match_update(request, match_id):
     form = MatchForm(request.POST or None, instance=match_instance)
     if form.is_valid():
         form.save()
-        return redirect('match_list')
-    return render(request, 'matches/match_list.html', {'form': form})
+        return redirect('match_list.html')
+    return render(request, 'matches/match_form.html', {'form': form})
 
 def match_delete(request, match_id):
     RepositoryManager.match.delete(match_id)
