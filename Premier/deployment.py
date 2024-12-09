@@ -7,6 +7,8 @@ from .settings import BASE_DIR
 ALLOWED_HOSTS = [os.environ.get('WEBSITE_HOSTNAME')]
 CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']]
 DEBUG = False
+APPLICATIONINSIGHTS_CONNECTION_STRING = os.environ('APPLICATIONINSIGHTS_CONNECTION_STRING')
+configure_azure_monitor()
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
