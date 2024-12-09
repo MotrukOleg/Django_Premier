@@ -67,6 +67,7 @@ class MatchForm(forms.ModelForm):
         model = match_info
         fields = ['home_team', 'away_team', 'date', 'home_team_goals', 'away_team_goals', 'stadium']
 
+
     widgets = {
         'home_team': forms.Select(attrs={'placeholder': 'Home Team'}),
         'away_team': forms.Select(attrs={'placeholder': 'Away Team'}),
