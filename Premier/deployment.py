@@ -9,8 +9,8 @@ ALLOWED_HOSTS = [os.environ.get('WEBSITE_HOSTNAME')]
 CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']]
 DEBUG = False
 
-APPLICATIONINSIGHTS_CONNECTION_STRING = os.getenv("APPLICATIONINSIGHTS_CONNECTION_STRING")
-configure_azure_monitor(connection_string=APPLICATIONINSIGHTS_CONNECTION_STRING)
+os.environ["APPLICATIONINSIGHTS_CONNECTION_STRING"] = "InstrumentationKey=d714fe96-3d4b-4991-ab0b-8783e893b74d;IngestionEndpoint=https://northeurope-2.in.applicationinsights.azure.com/;LiveEndpoint=https://northeurope.livediagnostics.monitor.azure.com/"
+configure_azure_monitor()
 
 
 MIDDLEWARE = [
