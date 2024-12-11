@@ -4,6 +4,7 @@ from django.db import connection
 
 from .settings import *
 from .settings import BASE_DIR
+from azure.monitor.opentelemetry import configure_azure_monitor
 
 ALLOWED_HOSTS = [os.environ.get('WEBSITE_HOSTNAME')]
 CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']]
