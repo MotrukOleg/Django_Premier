@@ -5,7 +5,7 @@ class club(models.Model):
     name = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     stadium = models.ForeignKey('stadium', on_delete=models.CASCADE)
-    adress = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
     tel = models.CharField(max_length=100)
     fax = models.CharField(max_length=100)
     website = models.CharField(max_length=100)
