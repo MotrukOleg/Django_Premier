@@ -84,11 +84,10 @@ WSGI_APPLICATION = 'Premier.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'premier_django',
-        'USER': 'root',
-        'PASSWORD': '197346825Oleg@',
-        'HOST': 'localhost',  # Set your MySQL host (e.g., 'localhost' or an IP address)
-        'PORT': '3306',  # Default MySQL port
+        'NAME': "djangopremier-database",
+        'USER': "Oliezhyk",
+        'PASSWORD': "197346825Oleg",
+        'HOST': "premierdjango-server.mysql.database.azure.com",
     }
 }
 
