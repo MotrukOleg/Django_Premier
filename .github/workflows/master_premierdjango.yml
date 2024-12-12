@@ -45,54 +45,35 @@ jobs:
             
   test:
     runs-on: ubuntu-latest
-    needs: build
-    services:
-      mysql:
-        image: mysql:8.0
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping --silent"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
-        env:
-          MYSQL_ROOT_PASSWORD: 197346825Oleg
-          MYSQL_DATABASE: testdb
-          MYSQL_USER: Oliezhyk
-          MYSQL_PASSWORD: 197346825Oleg
 
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: python-app
+      - name: Check out code
+        uses: actions/checkout@v4
 
-      - name: Unzip artifact for testing
-        run: unzip release.zip
-
-      - name: Set up Python version
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Create and start virtual environment
+      - name: Install dependencies
         run: |
           python -m venv venv
           source venv/bin/activate
           pip install -r requirements.txt
 
-      - name: Set up Django Test Database
+      - name: Run migrations and tests
+        env:
+          DATABASE_HOST: ${{ secrets.AZURE_MYSQL_HOST }}
+          DATABASE_USER: ${{ secrets.AZURE_MYSQL_USER }}
+          DATABASE_PASSWORD: ${{ secrets.AZURE_MYSQL_PASSWORD }}
+          DATABASE_NAME: ${{ secrets.AZURE_MYSQL_DATABASE }}
         run: |
           source venv/bin/activate
           python manage.py makemigrations
           python manage.py migrate
-
-      - name: Run Tests
-        run: |
-          source venv/bin/activate
-          pytest  # Replace with `python manage.py test` for Django-specific tests
-
+          python manage.py test
+  
+  
 
   deploy:
     runs-on: ubuntu-latest
