@@ -42,39 +42,32 @@ jobs:
           path: |
             release.zip
             !venv/
-            
+
   test:
     runs-on: ubuntu-latest
-    needs : build
 
     steps:
       - name: Check out code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Create and start virtual environment
+      - name: Set up Python environment
         run: |
           python -m venv venv
           source venv/bin/activate
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+          pip install -r requirements.txt
 
       - name: Run migrations and tests
         env:
-          DATABASE_HOST: ${{ secrets.AZURE_MYSQL_HOST }}
-          DATABASE_USER: ${{ secrets.AZURE_MYSQL_USER }}
-          DATABASE_PASSWORD: ${{ secrets.AZURE_MYSQL_PASSWORD }}
-          DATABASE_NAME: ${{ secrets.AZURE_MYSQL_DATABASE }}
+          DATABASE_HOST: premierdjango-server.mysql.database.azure.com
+          DATABASE_USER: Oliezhyk
+          DATABASE_PASSWORD: 197346825Oleg
+          DATABASE_NAME: djangopremier-database
         run: |
           source venv/bin/activate
           python manage.py makemigrations
           python manage.py migrate
           python manage.py test
+
   
   
 
